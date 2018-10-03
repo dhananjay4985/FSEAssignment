@@ -37,7 +37,9 @@ public class Book{
 	private transient Long subjectId;
 	
 	
-	@ManyToOne(cascade= {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH,CascadeType.REMOVE})
+	
+	//@ManyToOne(cascade= {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH,CascadeType.REMOVE})
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "subjectid")
 	//@JsonIgnoreProperties("references")
 	private Subject subject;

@@ -27,7 +27,8 @@ public class Subject {
 	@Column(name="durationinhours")
 	private Integer durationInHours;
 	
-	@OneToMany(fetch = FetchType.EAGER,targetEntity = Book.class ,mappedBy ="subject",cascade= {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH,CascadeType.REMOVE})
+	@OneToMany(fetch = FetchType.EAGER,targetEntity = Book.class ,mappedBy = "subject",orphanRemoval = true,
+			cascade= {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH,CascadeType.REMOVE})
 	//@JsonIgnoreProperties("subject")
 	private Set<Book> references = new HashSet<Book>();
 	

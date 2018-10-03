@@ -8,21 +8,23 @@ import org.springframework.stereotype.Repository;
 
 import com.library.main.model.Book;
 
-@Repository
+@Repository("bookDao")
 public class BookDaoImpl implements BookDao {
 	
-	@Autowired
-	SessionFactory sessionFactory;
-	
+	private SessionFactory sessionFactory;
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+
 	@Override
 	public void createBook(Book book) {
 		sessionFactory.getCurrentSession().saveOrUpdate(book);
 	}
 
 	@Override
-	public List<Book> getBook() {
-		sessionFactory.getCurrentSession().createQuery("from book").list();
-		return null;
+	public List<Book> bookList() {
+		return sessionFactory.getCurrentSession().createQuery("from book").list();
 	}
 
 	@Override
@@ -33,7 +35,6 @@ public class BookDaoImpl implements BookDao {
 	@Override
 	public void update(Book book) {
 		sessionFactory.getCurrentSession().update(book);
-		//return book;
 	}
 
 	@Override

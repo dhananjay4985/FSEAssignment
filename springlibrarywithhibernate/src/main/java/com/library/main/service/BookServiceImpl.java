@@ -13,8 +13,11 @@ import com.library.main.model.Book;
 @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
 public class BookServiceImpl implements BookService {
 
-	@Autowired
-	BookDao bookDao;
+	private BookDao bookDao;
+
+	public void setBookDao(BookDao bookDao) {
+		this.bookDao = bookDao;
+	}
 
 	@Override
 	@Transactional
@@ -24,8 +27,8 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	@Transactional
-	public List<Book> getBook() {
-		return bookDao.getBook();
+	public List<Book> bookList() {
+		return bookDao.bookList();
 	}
 
 	@Override
@@ -46,12 +49,5 @@ public class BookServiceImpl implements BookService {
 		bookDao.deleteBookById(bookId);
 	}
 
-	public BookDao getBookDao() {
-		return bookDao;
-	}
-
-	public void setBookDao(BookDao bookDao) {
-		this.bookDao = bookDao;
-	}
-
+	
 }
