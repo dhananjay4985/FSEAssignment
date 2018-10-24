@@ -1,0 +1,38 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="styles.css">
+<body class="bg">
+<div>
+<h2>Experience</h2>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-md-10">
+
+    <ul id="dynamic-list"></ul>
+	<div class="row">
+		<div class="col-sm-9">
+			<input class="form-control" type="text" id="candidate"/>
+		</div>
+		<div class="col-sm-3">
+			<input type="submit" id="add_li" value = "Add item"/>
+		</div>
+	</div>
+    <script src="script.js"></script>
+</div>
+</div>
+</div>
+</body>
+<script>
+$(document).ready(function () {
+  $("li").removeClass("active");
+  $('#experience').addClass('active');
+});
+</script>
