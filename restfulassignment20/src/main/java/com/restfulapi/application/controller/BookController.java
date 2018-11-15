@@ -1,5 +1,6 @@
 package com.restfulapi.application.controller;
 
+import java.net.URI;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.restfulapi.application.model.Book;
 import com.restfulapi.application.service.BookService;
@@ -42,8 +44,10 @@ public class BookController {
 		return bookService.update(bookDetails, bookId);
 	}
 	@PostMapping("/allbooks")
-	public void createBook(@Valid @RequestBody Book book) {		
+	public ResponseEntity<Void> createBook(@Valid @RequestBody Book book) {		
 		bookService.createBook(book);
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{bookId}").buildAndExpand(book.getBookId()).toUri();
+		return ResponseEntity.created(location).build();
 	}
 	@DeleteMapping("/allbooks/{bookId}")
 	public ResponseEntity<Void> deleteBook(@PathVariable(value = "bookId") Integer bookId) {
