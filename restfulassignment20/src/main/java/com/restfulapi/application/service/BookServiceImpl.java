@@ -29,10 +29,12 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public void createBook(Book saveBook) {
+	public Book createBook(Book saveBook) {
 		//adding subject id in book table
 	    saveBook.setSubject(subjectRepository.getOne(saveBook.getSubjectId()));
 		bookRepository.save(saveBook);
+		return saveBook;
+		
 	}
 
 	@Override

@@ -16,12 +16,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name="book")
-//@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-//@JsonIgnoreProperties(ignoreUnknown = true)
 public class Book{
-
-	//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-	//private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name="book_id")
@@ -50,8 +45,19 @@ public class Book{
 
 	public Book() {
 		super();
-	}
+	}	
 	
+	public Book(Integer bookId, Double price, Date publishDate, String title, Integer volume, Subject subject) {
+		super();
+		this.bookId = bookId;
+		this.price = price;
+		this.publishDate = publishDate;
+		this.title = title;
+		this.volume = volume;
+		this.subject = subject;
+	}
+
+
 	public Integer getBookId() {
 		return bookId;
 	}
