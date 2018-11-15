@@ -20,8 +20,10 @@ public class SubjectServiceImpl implements SubjectService{
 	}
 
 	@Override
-	public void createSubject(Subject subject) {	
+	public Subject createSubject(Subject subject) {	
+		System.out.println("ssss "+subject.toString());
 		subjectRepository.save(subject);
+		return subject;
 	}
 
 	@Override

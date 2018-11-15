@@ -6,9 +6,9 @@ import com.restfulapi.application.model.Subject;
 
 public interface SubjectService {
 
-	void createSubject(Subject subject);
-	List<Subject> getSubject();
-	Subject findById(Long subjectId);
-	Subject update(Subject subject, Long subjectId);
-	void deleteSubjectById(Long subjectId);
+	public Subject createSubject(Subject subject);
+	public List<Subject> getSubject();
+	public Subject findById(Long subjectId);
+	public Subject update(Subject subject, Long subjectId);
+	public void deleteSubjectById(Long subjectId);
 }

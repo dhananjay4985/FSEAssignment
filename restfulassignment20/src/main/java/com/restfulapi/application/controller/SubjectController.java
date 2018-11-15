@@ -1,5 +1,6 @@
 package com.restfulapi.application.controller;
 
+import java.net.URI;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.restfulapi.application.model.Subject;
 import com.restfulapi.application.service.SubjectService;
@@ -26,7 +28,6 @@ public class SubjectController {
 
 	
 	private SubjectService subjectService;
-	
 	
 	@Autowired
 	public SubjectController(SubjectService subjectService) {		
@@ -47,8 +48,11 @@ public class SubjectController {
 
 	}
 	@PostMapping("/allSubjects")
-	public void createSubject(@Valid @RequestBody Subject subject) {
+	public ResponseEntity<Void> createSubject(@Valid @RequestBody Subject subject) {
+		System.out.println("Subject ::"+subject.toString());
 		subjectService.createSubject(subject);
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{subjectId}").buildAndExpand(subject.getSubjectId()).toUri();
+		return ResponseEntity.created(location).build();
 	}
 	@DeleteMapping("/allSubjects/{subjectId}")
 	public ResponseEntity<Void> deleteSubjects(@PathVariable(value = "subjectId") Long subjectId) {
