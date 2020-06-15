@@ -1,0 +1,26 @@
+<div class="container">
+<h1>Add Book here..</h1>
+	<form (ngSubmit)="processForm()">
+		<div class = "form-group">
+			<label for = "bookId">BookId</label>
+			<input type="text" name = "bookId" class = "form-control" [(ngModel)]="book.bookId" >
+		</div>
+		<div class = "form-group">
+			<label for = "bookName">BookName</label>
+			<input type="text" name = "bookName"  class = "form-control" [(ngModel)] = "bookName">
+		</div>
+		<div class = "form-group">
+			<label for = "volume">Author</label>
+			<input type="text" name = "author" class = "form-control" [(ngModel)]="book.author" >
+		</div>
+		<div class = "form-group">
+			<label for = "publishDate">Genre</label>
+			<input type="text" name = "genre" class = "form-control" [(ngModel)]="book.genre">
+		</div>
+		<div class = "form-group">
+			<label for = "subjectId">ISBN</label>
+			<input type="text" name = "isbn" class = "form-control" [(ngModel)]="book.isbn">
+		</div>	
+		<button type="submit" class = "btn btn-success">Save</button>
+	</form>
+</div>
